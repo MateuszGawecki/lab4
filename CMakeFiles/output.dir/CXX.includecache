@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/gmate/projects/macierz/lab4/include/lab4/Matrix.hpp
+iostream
+-
+fstream
+-
+string
+-
+
+C:/Users/gmate/projects/macierz/lab4/src/Matrix.cpp
+../include/lab4/Matrix.hpp
+C:/Users/gmate/projects/macierz/lab4/include/lab4/Matrix.hpp
+
+C:/Users/gmate/projects/macierz/lab4/src/main.cpp
+../include/lab4/Matrix.hpp
+C:/Users/gmate/projects/macierz/lab4/include/lab4/Matrix.hpp
+
