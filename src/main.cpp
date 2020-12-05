@@ -3,7 +3,7 @@
 //#include <string>
 //using namespace std;
 
-#include "../include/lab4/Matrix.hpp"
+#include "../include/macierz/Matrix.hpp"
 
 int main()
 {

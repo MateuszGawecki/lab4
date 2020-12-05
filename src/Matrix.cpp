@@ -2,7 +2,7 @@
 //#include <fstream>
 //#include <string>
 
-#include "../include/lab4/Matrix.hpp"
+#include "../include/macierz/Matrix.hpp"
 
 //using namespace std;
 

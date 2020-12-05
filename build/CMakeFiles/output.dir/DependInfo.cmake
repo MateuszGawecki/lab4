@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/gmate/projects/macierz/lab4/src/Matrix.cpp" "C:/Users/gmate/projects/macierz/lab4/CMakeFiles/output.dir/src/Matrix.cpp.obj"
-  "C:/Users/gmate/projects/macierz/lab4/src/main.cpp" "C:/Users/gmate/projects/macierz/lab4/CMakeFiles/output.dir/src/main.cpp.obj"
+  "C:/Users/gmate/projects/macierz/src/Matrix.cpp" "C:/Users/gmate/projects/macierz/build/CMakeFiles/output.dir/src/Matrix.cpp.obj"
+  "C:/Users/gmate/projects/macierz/src/main.cpp" "C:/Users/gmate/projects/macierz/build/CMakeFiles/output.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
