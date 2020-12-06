@@ -1,11 +1,8 @@
 //#include <iostream>
 //#include <fstream>
 //#include <string>
-
-#include "../include/macierz/Matrix.hpp"
-
 //using namespace std;
-
+#include "../include/macierz/Matrix.hpp"
 
 Matrix::Matrix(string path)
 {
@@ -14,7 +11,7 @@ Matrix::Matrix(string path)
 
     if(!plik.good())
     {
-        exit (2);
+        throw MyExeption_read();
     }
     else
     {
@@ -42,7 +39,7 @@ void Matrix::store(string filename, string path)
 
   if(!plik.good())
   {
-      exit (1);
+      throw MyExeption_save();
   }
   else
   {
@@ -110,11 +107,21 @@ Matrix::~Matrix()
 
 void Matrix::set(int a, int b, double c)
 {
+    if(a<0 || a>n || b<0 || b>m)
+    {
+        throw MyExeption_set();
+    }
+
     tab[a][b]=c;
 }
 
 double Matrix::get(int a, int b)
 {
+    if(a<0 || a>n || b<0 || b>m)
+    {
+        throw MyExeption_get();
+    }
+
     return tab[a][b];
 }
 
@@ -144,7 +151,7 @@ Matrix Matrix::add(Matrix& a)
 {
     if(n!=a.n || m!=a.m)
     {
-        exit(1);
+        throw MyExeption_add();
     }
         Matrix w(n,m);
 
@@ -163,7 +170,7 @@ Matrix Matrix::subtract(Matrix& a)
 {
    if(n!=a.n || m!=a.m)
     {
-        exit(1);
+        throw MyExeption_subtract();
     }
         Matrix w(n,m);
 
@@ -182,7 +189,7 @@ Matrix Matrix::multiply(Matrix& a)
 {
     if(m!=a.n)
     {
-        exit(1);
+        throw MyExeption_multiply();
     }
         Matrix w(n,a.m);
 
@@ -199,11 +206,11 @@ Matrix Matrix::multiply(Matrix& a)
 }
 
 
-Matrix& Matrix::operator+(Matrix& a)
+Matrix Matrix::operator+(Matrix& a)
 {
     if(n!=a.n || m!=a.m)
     {
-        exit(1);
+        throw MyExeption_add();
     }
         Matrix w(n,m);
 
@@ -218,11 +225,11 @@ Matrix& Matrix::operator+(Matrix& a)
     return w;
 }
 
-Matrix& Matrix::operator-(Matrix& a)
+Matrix Matrix::operator-(Matrix& a)
 {
      if(n!=a.n || m!=a.m)
     {
-        exit(1);
+        throw MyExeption_subtract();
     }
         Matrix w(n,m);
 
@@ -237,11 +244,11 @@ Matrix& Matrix::operator-(Matrix& a)
     return w;
 }
 
-Matrix& Matrix::operator*(Matrix& a)
+Matrix Matrix::operator*(Matrix& a)
 {
      if(m!=a.n)
     {
-        exit(1);
+        throw MyExeption_multiply();
     }
         Matrix w(n,a.m);
 
@@ -255,4 +262,53 @@ Matrix& Matrix::operator*(Matrix& a)
         }
     
     return w;
+}
+
+double* Matrix::operator[](unsigned int index)
+{
+    double* row =new double[m];
+
+    for(int i=0; i<m; i++)
+    {
+        row[i]=tab[index][i];
+    }
+
+    return row;
+}
+
+ostream & operator<<(ostream &out, Matrix & mac)
+{
+    out<<mac.rows()<<" "<<mac.cols()<<endl;
+
+    for(int i=0;i<mac.rows();i++)
+    {
+        for(int j=0;j<mac.cols();j++)
+        {
+            out<<mac.tab[i][j]<<" ";
+        }
+        out<<endl;
+    }
+
+    return out;
+}
+
+bool Matrix::operator==(Matrix& a)
+{
+    if(n !=a.n || m!=a.m)
+    {
+        return false;
+    }
+
+    for(int i=0 ;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(tab[i][j]!=a.tab[i][j])
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }

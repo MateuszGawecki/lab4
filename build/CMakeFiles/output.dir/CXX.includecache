@@ -13,10 +13,8 @@ fstream
 -
 string
 -
-
-C:/Users/gmate/projects/macierz/src/Matrix.cpp
-../include/macierz/Matrix.hpp
-C:/Users/gmate/projects/macierz/include/macierz/Matrix.hpp
+exception
+-
 
 C:/Users/gmate/projects/macierz/src/main.cpp
 ../include/macierz/Matrix.hpp
